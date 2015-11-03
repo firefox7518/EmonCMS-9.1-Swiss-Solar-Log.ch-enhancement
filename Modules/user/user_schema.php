@@ -1,3 +1,7 @@
+/* Changes done to schema to add multiple fields for PVoutput reporting of generation and a consumption feed and 
+to store Enecsys 1st and 2nd Gen Solar gateway serial numbers.
+Added by Andreas Messerli - Swiss-Solar-log.ch - firefox7518@gmail.com */
+
 <?php
 
 $schema['users'] = array(

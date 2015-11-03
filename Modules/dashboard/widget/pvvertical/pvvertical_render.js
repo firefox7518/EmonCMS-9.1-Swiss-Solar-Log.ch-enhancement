@@ -13,6 +13,7 @@
 
 // Convenience function for shoving things into the widget object
 // I'm not sure about calling optionKey "optionKey", but I don't want to just use "options" (because that's what this whole function returns), and it's confusing enough as it is.
+// Widget created by Andreas Messerli - Swiss-Solar-log.ch - firefox7518@gmail.com
 function addOption(widget, optionKey, optionType, optionName, optionHint, optionData)
 {
 

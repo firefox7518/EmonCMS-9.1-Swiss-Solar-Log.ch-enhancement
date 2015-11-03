@@ -53,7 +53,7 @@ if (!$dashboard['height']) $dashboard['height'] = 400;
     <canvas id="can" width="940px" height="<?php echo $dashboard['height']; ?>px" style="position:absolute; top:0px; left:0px; margin:0; padding:0;"></canvas>
 </div>
 
-<script type="text/javascript" src="<?php echo $path; ?>Modules/dashboard/Views/js/designer.js"></script>
+<script type="text/javascript" src="<?php echo $path; ?>Modules/dashboard/Views/js/designer.js"></script> 
 <script type="application/javascript">
     var dashid = <?php echo $dashboard['id']; ?>;
     var path = "<?php echo $path; ?>";

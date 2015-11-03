@@ -1,4 +1,4 @@
-# Emoncms 9
+# Emoncms 9.1 - Swiss-Solar-Log.ch enhanced version
 
 Emoncms is an open-source web application for processing, logging and visualising energy, temperature and other environmental data and is part of the [OpenEnergyMonitor project](http://openenergymonitor.org/emon).
 

@@ -1,3 +1,17 @@
+# 
+# This script has been created by Andreas Messerli - Swiss-Solar-Log.ch to fulfil the need to have solar generation 
+# and house consumption also logged in pvoutput.org.
+# 
+# To do this EmonCMS has been enhanced to allow 2 feeds to be sent to pvoutput.org -> Generation = v2 and Consumption = v4
+# The users db has been enhanced to hold the pvoutput API and System ID as well as the both feed ID's necessary to send the data
+# Use Cron or Windows task scheduler to trigger this script every 1-5mins depending on your needs and subscription level
+# The log file will be created from where the script will be started (Path). In Windows Task Scheduler you need to set the 
+# working directory. Otherwise the log file will be created in the perl path ;-)
+# The script is still under development to maybe also incorporate more information like Temp and weather condition etc.
+# Feel free to change the script as you need but please let me know if you have made enhancements which are worth sharing for
+# everyone! Send mail to firefox7518@gmail.com
+#
+
 use LWP::Simple;
 use DBI;
 use DateTime;

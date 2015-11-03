@@ -2,7 +2,7 @@ use LWP::Simple;
 use DBI;
 use DateTime;
 
-$dbh = DBI->connect('DBI:mysql:emoncms;host=localhost:3307', 'emoncms', 'phantom'
+$dbh = DBI->connect('DBI:mysql:emoncms;host=localhost', 'emoncms', 'dbpassword'
 	           ) || die "Could not connect to database: $DBI::errstr";
 $dbh -> {mysql_auto_reconnect} = 1;
 

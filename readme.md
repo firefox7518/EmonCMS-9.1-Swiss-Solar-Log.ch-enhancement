@@ -2,6 +2,7 @@
 
 This is an enhanced version for Swiss-Solar-Log.ch maintained by Andreas Messerli. Full credits go out to EmonCMS (OpenEnergyMonitor Project) and Chaveiro who has done the major improvements of the new EmonCMS.
 
+
 Emoncms is an open-source web application for processing, logging and visualising energy, temperature and other environmental data and is part of the [OpenEnergyMonitor project](http://openenergymonitor.org/emon).
 
 **Version 9 of emoncms has been developed by [Chaveiro](https://github.com/chaveiro/) with a significant list of improvements, the EmonCMS 9.0 RC forum thread with full change log can be found here [http://openenergymonitor.org/emon/node/11009](http://openenergymonitor.org/emon/node/11009)**

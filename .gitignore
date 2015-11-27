@@ -4,22 +4,6 @@ settings.php
 emoncms.log
 .idea
 
-# Ignore all modules except core ones
-Modules/*
-Modules/*/
-!Modules/admin/
-!Modules/dashboard/
-!Modules/feed/
-!Modules/input/
-!Modules/process/
-!Modules/schedule/
-!Modules/time/
-!Modules/user/
-!Modules/vis/
 
-# Ignore all themes except basic
-Theme/*
-Theme/*/
-!Theme/basic/
 
 2015-11-02_pvoutput_generation_log_emonuser.txt

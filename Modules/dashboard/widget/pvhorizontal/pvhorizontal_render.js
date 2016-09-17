@@ -48,9 +48,10 @@ function pvhorizontal_widgetlist()
 					[0, "Off"]
 				];
 
+	addOption(widgets["pvhorizontal"], "title",        "value",          _Tr("Title"),            _Tr("Title of Widget"),                                                                  []);
 	addOption(widgets["pvhorizontal"], "feedid",        "feedid",          _Tr("Feed"),            _Tr("Feed value"),                                                                  []);
 	addOption(widgets["pvhorizontal"], "max",         "value",         _Tr("Max value"),       _Tr("Max value to show"),                                                           []);
-//	addOption(widgets["pvhorizontal"], "scale",       "value",         _Tr("Scale"),           _Tr("Value is multiplied by scale before display. Defaults to 1"),                  []);
+	addOption(widgets["pvhorizontal"], "scale",       "value",         _Tr("Scale"),           _Tr("Value is multiplied by scale before display. Defaults to 1"),                  []);
 //	addOption(widgets["pvhorizontal"], "units",       "value",         _Tr("Units"),           _Tr("Unit type to show after value. Ex: <br>\"{Reading}{unit-string}\""),           []);
 //	addOption(widgets["pvhorizontal"], "offset",      "value",         _Tr("Offset"),          _Tr("Static offset. Subtracted from value before computing position (default 0)"),  []);
 //	addOption(widgets["pvhorizontal"], "colour",      "colour_picker", _Tr("Colour"),          _Tr("Colour to draw bar in"),                                                       []);
@@ -71,6 +72,7 @@ function pvhorizontal_draw()
 {
 	$('.pvhorizontal').each(function(index)
 	{
+		var title = $(this).attr("title");
 		var feedid = $(this).attr("feedid");
 		if (associd[feedid] === undefined) { console.log("Review config for feed id of " + $(this).attr("class")); return; }
 		var val = curve_value(feedid,dialrate);
@@ -82,6 +84,7 @@ function pvhorizontal_draw()
 			draw_pvhorizontal(widgetcanvas[id],
 								 0,
 								 0,
+								 $(this).attr("title"),
 								 $(this).width(),
 								 $(this).height(),val*scale,
 								 $(this).attr("max"),
@@ -108,6 +111,7 @@ function pvhorizontal_fastupdate()
 function draw_pvhorizontal(context,
 				x_pos,				// these x and y coords seem unused?
 				y_pos,
+				title,
 				width,
 				height,
 				raw_value,
@@ -128,6 +132,7 @@ function draw_pvhorizontal(context,
 	max_value = 1 * max_value || 3000;
 	// if units_string == false: "". Else units_string
 	units_string = units_string || "W";
+	title = title || "";
 
 	static_offset = 1*static_offset || 0;
 	var display_value = raw_value
@@ -184,6 +189,14 @@ function draw_pvhorizontal(context,
 					width-(pvhorizontal_border_space*2),
 					(height-pvhorizontal_border_space) - pvhorizontal_top );
 
+	//
+	// print title
+	context.fillStyle = "#FFFFFF";
+	context.textAlign    = "center";
+	context.font = "bold "+(size*0.25)+"px arial";
+	context.fillText(title, half_width, height/6.5 + (size *0.05));
+	//					
+					
 	if (graduationBool == 1)
 	{
 

@@ -11,10 +11,10 @@
     http://openenergymonitor.org/emon/forum
  */
 
-function led_widgetlist()
+function led2_widgetlist()
 {
   var widgets = {
-    "led":
+    "led2":
     {
       "offsetx":-40,"offsety":-40,"width":80,"height":80,
       "menu":"Widgets",
@@ -27,47 +27,47 @@ function led_widgetlist()
   return widgets;
 }
 
-function led_init()
+function led2_init()
 {
-  setup_widget_canvas('led');
+  setup_widget_canvas('led2');
 }
 
-function led_draw() {
-  $('.led').each(function(index)
+function led2_draw() {
+  $('.led2').each(function(index)
   {
     var feedid = $(this).attr("feedid");
     if (associd[feedid] === undefined) { console.log("Review config for feed id of " + $(this).attr("class")); return; }
     var val = associd[feedid]['value'] * 1;
     var id = "can-"+$(this).attr("id");
     if (browserVersion < 9)
-      draw_led_ie8(widgetcanvas[id], val,$(this).attr("size"));
+      draw_led2_ie8(widgetcanvas[id], val,$(this).attr("size"));
     else
-      draw_led(widgetcanvas[id], val,$(this).attr("size"));
+      draw_led2(widgetcanvas[id], val,$(this).attr("size"));
   });
 }
 
-function led_slowupdate() {
-  led_draw();
+function led2_slowupdate() {
+  led2_draw();
 }
 
-function led_fastupdate() {}
+function led2_fastupdate() {}
 
-function draw_led(circle,status,size){
+function draw_led2(circle,status,size){
   if (!circle) return;
   circle.clearRect(0,0,80,80);
 
   var radgrad = circle.createRadialGradient(40,40,0,40,40,size);
 
-  if (status==0) {                   // red
+  if (status==2) {                   // grey
     radgrad.addColorStop(0, '#F75D59');
     radgrad.addColorStop(0.9, '#C11B17');
   } else if (status>0 && status <=1) {            // green
     radgrad.addColorStop(0, '#A7D30C');
     radgrad.addColorStop(0.9, '#019F62');
-  } else if (status>1 && status <=2) {           // grey
+  } else if (status>1 && status <=2) {           // red
     radgrad.addColorStop(0, '#736F6E');
     radgrad.addColorStop(0.9, '#4A4344');
-  } else if (status>2 && status <=3) { 		  //Blue
+  } else if (status>0 && status <=3) { 		  //Blue
     radgrad.addColorStop(0, '#00C9FF');
     radgrad.addColorStop(0.9, '#00B5E2');
   } else if (status>3 && status <=4) {		  // Purple
@@ -88,14 +88,14 @@ function draw_led(circle,status,size){
 }
 
 
-function draw_led_ie8(circle,status){
+function draw_led2_ie8(circle,status){
   if (!circle) return;
 
-  if (status==0) {			// red
+  if (status==2) {			// grey
     circle.fillStyle = "#C11B17";
   } else if (status==1) {			// green
     circle.fillStyle = "#019F62";
-  } else if (status==2) {			// grey
+  } else if (status==0) {			// red
     circle.fillStyle = "#4A4344";
   } else if (status==3) {			//Blue
     circle.fillStyle = "#00B5E2";
@@ -113,7 +113,7 @@ function draw_led_ie8(circle,status){
   circle.fill()
 }
 
-function draw_binary_led(circle,status){
+function draw_binary_led2(circle,status){
   if (!circle) return;
   circle.clearRect(0,0,80,80);
 
@@ -133,7 +133,7 @@ function draw_binary_led(circle,status){
   circle.fillRect(20,20,60,60);
 }
 
-function draw_binary_led_ie8(circle,status){
+function draw_binary_led2_ie8(circle,status){
   if (!circle) return;
 
   if (status==0) {			// red

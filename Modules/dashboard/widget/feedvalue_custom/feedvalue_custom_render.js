@@ -11,7 +11,8 @@
     http://openenergymonitor.org/emon/forum
  */
 
-
+// feedvalue widget customized to allow to choose a colour, font, size and position of Units (thanks to Matt Galloway for this addition)
+// rest enhanced by Andreas Messerli (firefox7518@gmail.com) - Swiss-solar-log.ch
  
  function addOption(widget, optionKey, optionType, optionName, optionHint, optionData)
 {
@@ -67,6 +68,11 @@ function feedvalue_custom_widgetlist()
 					[2, "10"],
 					[1, "8"],
 					[0, "32"]
+				];
+
+	var unitEndOptions = [
+					[0, "Back"],
+					[1, "Front"]
 				];				
 
   addOption(widgets["feedvalue_custom"], "feedid",     "feedid",  _Tr("Feed"),     _Tr("Feed value"),      []);
@@ -75,6 +81,7 @@ function feedvalue_custom_widgetlist()
   addOption(widgets["feedvalue_custom"], "units",      "value",   _Tr("Units"),    _Tr("Units to show"),   []);
   addOption(widgets["feedvalue_custom"], "decimals",   "dropbox", _Tr("Decimals"), _Tr("Decimals to show"),    decimalsDropBoxOptions);
   addOption(widgets["feedvalue_custom"], "size",   	"dropbox", _Tr("Size"), _Tr("Text size in px to use"),    sizeoptions);
+  addOption(widgets["feedvalue_custom"], "unitend",  "dropbox", _Tr("Unit position"), _Tr("Where should the unit be shown"), unitEndOptions);
 
   return widgets;
 }
@@ -106,6 +113,9 @@ function feedvalue_custom_draw()
     var decimals = $(this).attr("decimals");
     if (decimals==undefined) decimals = -1;
 	
+	var unitend = $(this).attr("unitend");
+    if (unitend==undefined) unitend = 0;
+	
 	{
 	var id = "can-"+$(this).attr("id");
 
@@ -119,7 +129,8 @@ function feedvalue_custom_draw()
 						 $(this).attr("units"),
 						 $(this).attr("colour"),
 						 $(this).attr("decimals"),
-						 $(this).attr("size")
+						 $(this).attr("size"),
+						 $(this).attr("unitend")
 						 );
 	}
   });
@@ -149,7 +160,8 @@ function draw_feedvalue_custom(context,
 				units,
 				colour,
 				decimals,
-				size)
+				size,
+				unitend)
 {
 	if (!context)
 		return;
@@ -244,14 +256,22 @@ function draw_feedvalue_custom(context,
 		colour = "#" + colour;	
 	
     //$(this).html(val+units);
+
+	
 	var half_width = width/2;
 	var half_height = height/2;
 	
 	context.fillStyle = colour;
 	context.textAlign    = "center";
 	context.font = (size+"px "+ fontname);
+	
+	if (unitend ==0){
 	context.fillText(val+units, half_width , half_height);
-  
+	}
+	
+	if (unitend ==1){
+	context.fillText(units+val, half_width , half_height);
+	}
   
 }
 

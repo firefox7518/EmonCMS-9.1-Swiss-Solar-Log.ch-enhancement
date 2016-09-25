@@ -198,6 +198,10 @@ var designer = {
                 options_html += designer.select_feed(box_options[z],feedlist,0,val);
             }
             
+			else if (options_type && options_type[z] == "feedid2"){
+                options_html += designer.select_feed(box_options[z],feedlist,0,val);
+            }
+			
             // realtime feeds only
             else if (options_type && options_type[z] == "feedid_realtime"){
                 options_html += designer.select_feed(box_options[z],feedlist,1,val);
@@ -488,6 +492,13 @@ var designer = {
                     var colour = $(this).val();
                     colour = colour.replace("#","");
                     $("#"+designer.selected_box).attr($(this).attr("id"), colour);
+                }
+				else if ($(this).attr("id")=="title_colour"){
+                    // Since colour values are generally prefixed with "#", and "#" isn't valid in URLs, we strip out the "#".
+                    // It will be replaced by the value-checking in the actual plot function, so this won't cause issues.
+                    var colour = $(this).val();
+                    title_colour = colour.replace("#","");
+                    $("#"+designer.selected_box).attr($(this).attr("id"), title_colour);
                 }
                 else if ($(this).attr("id").indexOf("styleUnit") == 0){
                     //Get styleUnit* options and set it to boxlist array
